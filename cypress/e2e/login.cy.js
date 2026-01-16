@@ -1,9 +1,15 @@
 describe('Login',() => {
-    // it é o comando pra iniciar o teste
-    it('Realiar Login com sucessso', () => {
+
+    beforeEach(() => {
+
         // Arrange
 
         cy.visit('https://www.saucedemo.com/')
+
+    })
+
+    // it é o comando pra iniciar o teste
+    it('Realiar Login com sucessso', () => {
 
         // Act
 
@@ -21,9 +27,6 @@ describe('Login',() => {
     } )
 
     it.only('Realizar login informando credenciais inválidas', () => {
-
-        // Arrange
-        cy.visit('https://www.saucedemo.com/')
 
         // Act
         cy.get('[data-test="username"]').type('user_invalid')
