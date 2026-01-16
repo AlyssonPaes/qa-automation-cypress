@@ -2,13 +2,18 @@ describe('Login',() => {
     // it é o comando pra iniciar o teste
     it('Realiar Login com sucessso', () => {
         // Arrange
+
         cy.visit('https://www.saucedemo.com/')
+
         // Act
+
         cy.get('[data-test="username"]').type('standard_user')
 
         cy.get('[data-test="password"]').type('secret_sauce')
 
         cy.get('[data-test="login-button"]').click()
+
+        cy.screenshot('Login')
 
         // Assert
 
@@ -26,6 +31,8 @@ describe('Login',() => {
         cy.get('[data-test="password"]').type('senha_invalid')
 
         cy.get('[data-test="login-button"]').click()
+
+        cy.screenshot('Erro credenciais inválidas')
 
         // Assert
         cy.get('[data-test="error"]').should('contain.text','Username and password do not match any user in this service')

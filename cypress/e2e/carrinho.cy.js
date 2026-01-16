@@ -20,6 +20,8 @@ describe('Carrinho', () => {
 
         cy.get('[data-test="shopping-cart-link"]').click()
 
+        cy.screenshot('Produto Adicionado ao carrinho')
+
         // Assert
 
         cy.url().should('eq','https://www.saucedemo.com/cart.html')
@@ -29,6 +31,8 @@ describe('Carrinho', () => {
         .and('contain.text','Sauce Labs Backpack')
 
     })
+
+    //TODO it('Remover produto do carrinho com sucesso', () => {
 
     
 })
