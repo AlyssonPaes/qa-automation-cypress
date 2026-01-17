@@ -1,54 +1,42 @@
+import login from '../pages/login'
+import inventory from '../pages/inventory'
+import header from '../pages/header'
+import cart from '../pages/cart'
+
 describe('Carrinho', () => {
 
     beforeEach(() => {
 
         // Arrange
-
-        cy.visit('https://www.saucedemo.com/')
-
-        cy.get('[data-test="username"]').type('standard_user')
-
-        cy.get('[data-test="password"]').type('secret_sauce')
-
-        cy.get('[data-test="login-button"]').click()
+        login.visitarPagina() //metodo que visita a pagina de login
+        login.preencherCredenciaisValidas() //metodo que faz login com um usuário valido (sem erros)
 
     })
 
-    it('Adicionar produto ao carrinho com sucesso', () => {
+    it('Adicionar produto ao carrinho com sucesso', () => {//Teste para adicionar um produto ao carrinho e validar que ele foi adicionado
 
         // Act
+        const qtdItensAdicionados = 1
+        inventory.adicionarProduto('Sauce Labs Backpack') //metodo que adiciona o produto ao carrinho
 
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
-
-        cy.get('[data-test="shopping-cart-badge"]')
-        .should('be.visible')
-        .and('contain.text','1')
-
-        cy.get('[data-test="shopping-cart-link"]').click()
-
-        cy.screenshot('Produto Adicionado ao carrinho')
 
         // Assert
+        header.validaQueCarrinhoPossuiItens(qtdItensAdicionados)//metodo que valida que o carrinho possui 1 item
+        header.navegarParaCarrinho()//metodo que navega para o carrinho
 
-        cy.url().should('eq','https://www.saucedemo.com/cart.html')
-
-        cy.get('[data-test="inventory-item-name"]')
-        .should('be.visible')
-        .and('contain.text','Sauce Labs Backpack')
+        cart.validarProdutoNoCarrinho('Sauce Labs Backpack')//metodo que valida que o produto com esse nome está no carrinho
 
     })
 
-    it('Remover produto do carrinho com sucesso', () => {
+    it('Remover produto do carrinho com sucesso', () => { //Teste para remover um produto do carrinho e validar que ele foi removido
 
-        cy.get('[data-test="add-to-cart-sauce-labs-backpack"]').click()
-
-        cy.get('[data-test="shopping-cart-badge"]')
-        .should('be.visible')
-        .and('contain.text','1')
+        inventory.adicionarProduto('Sauce Labs Backpack')
 
         // Act
+        inventory.removerProduto('Sauce Labs Backpack')//metodo que remove o produto do carrinho
 
-        cy.get('[data-test="remove-sauce-labs-backpack"]').click()
+        // Assert
+        header.validaQueCarrinhoNaoPossuiItens()
 
         cy.screenshot('Produto Removido do carrinho')
 

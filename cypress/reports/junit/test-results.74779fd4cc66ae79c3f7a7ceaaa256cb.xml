@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="8.916" tests="2" failures="1">
+  <testsuite name="Root Suite" timestamp="2026-01-16T20:50:32" tests="0" file="cypress\e2e\carrinho.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="Carrinho" timestamp="2026-01-16T20:50:32" tests="2" time="8.913" failures="1">
+    <testcase name="Carrinho Adicionar produto ao carrinho com sucesso" time="0.000" classname="Adicionar produto ao carrinho com sucesso">
+      <failure message="Timed out retrying after 4000ms: Expected to find element: `[data-test=&quot;add-to-cart-sauce-labs backpack&quot;]`, but never found it." type="AssertionError"><![CDATA[AssertionError: Timed out retrying after 4000ms: Expected to find element: `[data-test="add-to-cart-sauce-labs backpack"]`, but never found it.
+    at Inventory.adicionarProduto (webpack://cypress/./cypress/pages/inventory/index.js:15:11)
+    at Context.eval (webpack://cypress/./cypress/e2e/carrinho.cy.js:21:18)]]></failure>
+    </testcase>
+    <testcase name="Carrinho Remover produto do carrinho com sucesso" time="1.686" classname="Remover produto do carrinho com sucesso">
+    </testcase>
+  </testsuite>
+</testsuites>

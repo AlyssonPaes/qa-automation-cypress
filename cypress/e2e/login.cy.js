@@ -1,10 +1,12 @@
+import login from "../pages/login";
+import inventory from "../pages/inventory";
+
 describe('Login',() => {
 
     beforeEach(() => {
 
         // Arrange
-
-        cy.visit('https://www.saucedemo.com/')
+        login.visitarPagina()
 
     })
 
@@ -12,35 +14,20 @@ describe('Login',() => {
     it('Realiar Login com sucessso', () => {
 
         // Act
-
-        cy.get('[data-test="username"]').type('standard_user')
-
-        cy.get('[data-test="password"]').type('secret_sauce')
-
-        cy.get('[data-test="login-button"]').click()
-
-        cy.screenshot('Login')
+        login.preencherCredenciaisValidas()
 
         // Assert
+        inventory.validarAcessoAPagina()//metodo que valida que o usuário acessou a pagina   
 
-        cy.url().should('eq','https://www.saucedemo.com/inventory.html')
     } )
 
     it.only('Realizar login informando credenciais inválidas', () => {
 
         // Act
-        cy.get('[data-test="username"]').type('user_invalid')
-
-        cy.get('[data-test="password"]').type('senha_invalid')
-
-        cy.get('[data-test="login-button"]').click()
-
-        cy.screenshot('Erro credenciais inválidas')
+        login.preencherCredenciaisInvalidas()   
 
         // Assert
-        cy.get('[data-test="error"]').should('contain.text','Username and password do not match any user in this service')
-
-        cy.url().should('eq','https://www.saucedemo.com/')
+        login.validarErroCredenciaisInvalidas()//metodo que valida a mensagem de erro de credenciais inválidas
         
     })
 
