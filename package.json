@@ -10,13 +10,14 @@
     "cypress:open:qa": "cypress open --config-file config-qa.js --browser chrome"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alysson Cotta Paes",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "cypress": "^15.9.0",
     "cypress-mochawesome-reporter": "^4.0.2",
     "cypress-multi-reporters": "^2.0.5",
+    "dotenv": "^17.2.3",
     "mocha-junit-reporter": "^2.2.1"
   }
 }

@@ -21,7 +21,7 @@ describe('Login',() => {
 
     } )
 
-    it.only('Realizar login informando credenciais inválidas', () => {
+    it('Realizar login informando credenciais inválidas', () => {
 
         // Act
         login.preencherCredenciaisInvalidas()   
