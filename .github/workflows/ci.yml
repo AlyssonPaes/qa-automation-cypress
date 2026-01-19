@@ -17,11 +17,11 @@ jobs:
           config-file: config-dev.js
       - uses: actions/upload-artifact@v4
         with:
-          name: cypress-reports
+          name: cypress-reports # Nome do artefato de relatório
           path: cypress/reports
           if-no-files-found: ignore 
       - uses: actions/upload-artifact@v4
         with:
-          name: cypress-videos
+          name: cypress-videos # Nome do artefato de vídeos
           path: cypress/videos
           if-no-files-found: ignore 
