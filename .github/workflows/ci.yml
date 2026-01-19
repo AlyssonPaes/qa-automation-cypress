@@ -3,12 +3,15 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-24.04
+    env:  # ← Movido para cá (nível do job)
+      BASE_URL: ${{ secrets.BASE_URL }}
+      USER: ${{ secrets.SAUCE_USER }}
+      PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4  # v6 não existe, usa v4
+      
       - name: Cypress run
-        uses: cypress-io/github-action@v6 
-    env:
-        BASE_URL: ${{ secrets.BASE_URL }}
-        USER: ${{ secrets.SAUCE_USER }}
-        PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
+        uses: cypress-io/github-action@v6
+        with:
+          config-file: cypress.config-dev.js  # Se você usa esse config
